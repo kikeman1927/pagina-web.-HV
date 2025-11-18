@@ -1,0 +1,310 @@
+/* --------------------------------------------------
+   RESET
+-------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  background: linear-gradient(140deg, #0a0f1f, #111829, #0c1222);
+  min-height: 100vh;
+  cursor: none;
+}
+
+/* --------------------------------------------------
+   CURSOR PERSONALIZADO
+-------------------------------------------------- */
+.custom-cursor {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #00eaff;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.08s ease-out;
+}
+
+.custom-cursor.click {
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+/* --------------------------------------------------
+   HEADER Y NAVEGACIÓN
+-------------------------------------------------- */
+.site-header {
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(6px);
+  border-bottom: 3px solid #00eaff;
+  box-shadow: 0 0 12px #00eaff;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  animation: tronGlow 2.5s infinite ease-in-out;
+  padding: 25px 50px;
+}
+
+@keyframes tronGlow {
+  0% { box-shadow: 0 0 8px #00eaff; }
+  50% { box-shadow: 0 0 25px #00f7ff; }
+  100% { box-shadow: 0 0 8px #00eaff; }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #00eaff;
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav__list a {
+  font-weight: bold;
+  color: #00eaff;
+  transition: 0.2s;
+}
+
+.nav__list a:hover {
+  text-shadow: 0 0 8px #00eaff;
+}
+
+/* --------------------------------------------------
+   HERO
+-------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: 150px 20px;
+}
+
+.hero__content h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #00eaff;
+}
+
+.hero__button {
+  margin-top: 60px;
+}
+
+/* Botón */
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #00eaff;
+  color: #000;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00eaff, 0 0 30px #00eaff;
+  transition: 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 25px #00eaff, 0 0 60px #00eaff;
+  transform: translateY(-3px) scale(1.05);
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -40%;
+  width: 200%;
+  height: 300%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent);
+  transform: rotate(25deg);
+  transition: 0.6s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+/* --------------------------------------------------
+   SECCIONES
+-------------------------------------------------- */
+.section {
+  padding: 90px 50px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.work__grid {
+  display: grid;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.work__item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+.site-footer {
+  text-align: center;
+  padding: 40px 0;
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------
+   TRAIL DEL CURSOR
+-------------------------------------------------- */
+.cursor-trail {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #00eaff;
+  opacity: 0.3;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.15s linear;
+  z-index: 9998;
+}
+
+/* --------------------------------------------------
+   ESTRELLAS ANIMADAS
+-------------------------------------------------- */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: blink linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.4); }
+  100% { opacity: 0.2; transform: scale(0.8); }
+}
+
+/* --------------------------------------------------
+   PARALLAX
+-------------------------------------------------- */
+#parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -5;
+}
+
+.layer {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  background-repeat: repeat;
+  background-size: cover;
+  opacity: 0.45;
+  transition: transform 0.1s linear;
+}
+
+.layer-back  { background-image: url("https://i.imgur.com/MC2aRjC.png"); opacity: 0.3; }
+.layer-mid   { background-image: url("https://i.imgur.com/8N7E3cG.png"); opacity: 0.25; }
+.layer-front { background-image: url("https://i.imgur.com/kscyq7Q.png"); opacity: 0.4; }
+
+/* --------------------------------------------------
+   NAVE ESPACIAL ANIMADA
+-------------------------------------------------- */
+#spaceship {
+  position: fixed;
+  top: 50%;
+  left: -200px;
+  width: 150px;
+  height: 80px;
+  z-index: 999;
+  opacity: 0.85;
+  pointer-events: none;
+
+  /* SVG  */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3e%3cpolygon points='10,50 110,10 180,50 110,90' fill='%2300eaff' stroke='%23ffffff' stroke-width='4'/%3e%3ccircle cx='150' cy='50' r='12' fill='%23ffffff'/%3e%3c/svg%3e");
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  animation: flyShip 12s linear infinite;
+}
+
+@keyframes flyShip {
+  0% {
+    transform: translateX(-200px) translateY(-30px) rotate(-5deg) scale(1);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  50% {
+    transform: translateX(calc(100vw + 200px)) translateY(30px) rotate(5deg) scale(1.1);
+  }
+  90% { opacity: 1; }
+  100% {
+    transform: translateX(calc(100vw + 400px)) translateY(80px) rotate(10deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* -----------------------------------------
+      NAVES ESPACIALES ANIMADAS
+----------------------------------------- */
+.spaceship {
+  position: fixed;
+  top: 100px;
+  left: -120px; /* siempre inicia fuera de pantalla */
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.9;
+  transform: translateY(-50%);
+  transition: transform 0.2s linear;
+}
+.spaceship img {
+  width: 120px;
+  height: auto;
+  animation: fly 10s linear infinite;
+}

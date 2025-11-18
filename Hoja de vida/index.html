@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arturo Manjarrez Muñoz • Tecnico en programación de software</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+ <body>
+  <div id="spaceship"></div>   <!-- ⭐ NAVE ANIMADA -->
+  <div id="parallax-bg">
+  <div class="layer layer-back"></div>
+  <div class="layer layer-mid"></div>
+  <div class="layer layer-front"></div>
+</div>
+
+
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="https://continuada.ucompensar.edu.co/desarrollo-web-y-programacion/">Diseño y Desarrollo de paginas web</a>
+      <ul class="nav__list">
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#work">Trabajo</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero__content">
+      <h1>Hola, soy <span class="highlight">Arturo Manjarrez Muñoz</span></h1>
+      <p>Tecnico en programación de software</p>
+      <a class="btn btn-primary hero__button" href="#contact">HABLEMOS</a>
+
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <h2>Sobre mí</h2>
+    <p>Ingeniero en formación y técnico en programación de software, con más de 8 años de experiencia en el sector de tecnología e infraestructura solucionando incidencias en software y hardware. Conocimiento en administración de servidores, automatización de procesos RPA</p>
+  </section>
+
+  <section id="work" class="section work">
+    <h2>Mis experiencias profesionales</h2>
+    <div class="work__grid">
+      <!-- -->
+      <div class="work__item">
+        <h3>Analista de tecnología - JURISCOOP</h3>
+        <p>Soporte nivel 1 y 2 a usuarios e infrastructura. administración de servidores, soporte y administración de aplicaciones, administración de procesos de automatización en Uipath y Power Automate.</p>
+      </div>
+      <!-- … -->
+
+      <div class="work__item">
+        <h3>Analista de soporte - MICROHARD S.A.S</h3>
+        <p>soporte a usuario final de acuerdo a incidencias y requerimientos, instalación y actualización de software en equipos de la organización, activación d e puntos de red de acuerdo a politicas de organización.
+    </div>
+
+     <div class="work__item">
+        <h3>Técnico de soporte Nivel II - COLSOF SA</h3>
+        <p>soporte en sitio, atención de incidencias y requerimientos, instalación de software y hardware, activación de puntos de red de acuerdo con politicas d e red de entidad.</p>
+      </div>
+
+       <div class="work__item">
+        <h3>Auxiliar de sistemas - IIE INGENIERIA</h3>
+        <p>Soporte a usuario final en relación a incidentes y requierimientos sobre el hardware y software de equipos de computo e impresoras asi como mantenimi ento de computadores. administración de cuentas de correo y directorio activo, asignación de equipos de comunicación y soporte a redes de datos</p>
+      </div>
+
+  </section>
+
+  <section id="contact" class="section contact">
+    <h2>Contacto</h2>
+    <p>¿Quieres trabajar conmigo? Escríbeme a <a href="mailto:enriquemanjarrez9@gmail.com">enriquemanjarrez9@gmail.com</a></p>
+  </section>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Arturo Manjarrez Muñoz. Todos los derechos reservados.</p>
+  </footer>
+
+ <script>
+/* ------------------------------
+   CURSOR PERSONALIZADO
+------------------------------ */
+const cursor = document.createElement("div");
+cursor.classList.add("custom-cursor");
+document.body.appendChild(cursor);
+
+const trailCount = 12;  
+let trails = [];
+
+for (let i = 0; i < trailCount; i++) {
+  let t = document.createElement("div");
+  t.classList.add("cursor-trail");
+  document.body.appendChild(t);
+  trails.push(t);
+}
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.pageX + "px";
+  cursor.style.top = e.pageY + "px";
+
+  trails.forEach((t, index) => {
+    setTimeout(() => {
+      t.style.left = e.pageX + "px";
+      t.style.top = e.pageY + "px";
+    }, index * 40);
+  });
+});
+
+document.addEventListener("mousedown", () => {
+  cursor.classList.add("click");
+});
+
+document.addEventListener("mouseup", () => {
+  cursor.classList.remove("click");
+});
+
+
+/* ------------------------------
+   ESTRELLAS ANIMADAS DE FONDO
+------------------------------ */
+const starsContainer = document.createElement("div");
+starsContainer.classList.add("stars");
+document.body.appendChild(starsContainer);
+
+for (let i = 0; i < 120; i++) {
+  let star = document.createElement("span");
+  star.classList.add("star");
+  let size = Math.random() * 3;
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+  star.style.left = Math.random() * window.innerWidth + "px";
+  star.style.top = Math.random() * window.innerHeight + "px";
+  star.style.animationDuration = 2 + Math.random() * 4 + "s";
+  starsContainer.appendChild(star);
+}
+</script>
+
+<script>
+/* -----------------------------------------
+   PARALLAX ANIMADO CON MOVIMIENTO DEL MOUSE
+----------------------------------------- */
+document.addEventListener("mousemove", (e) => {
+  let x = (e.clientX / window.innerWidth - 0.5) * 20;
+  let y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+  document.querySelector(".layer-back").style.transform =
+    `translate(${x * 0.2}px, ${y * 0.2}px)`;
+
+  document.querySelector(".layer-mid").style.transform =
+    `translate(${x * 0.5}px, ${y * 0.5}px)`;
+
+  document.querySelector(".layer-front").style.transform =
+    `translate(${x}px, ${y}px)`;
+});
+</script>
+
+<script>
+/* -----------------------------------------
+   NAVES ESPACIALES ANIMADAS
+----------------------------------------- */
+function launchSpaceship() {
+  const ship = document.createElement("img");
+
+  // 🚀 Nave 100% funcional (sí existe)
+  ship.src = "https://i.imgur.com/5cZQ5Pp.png";
+  ship.classList.add("spaceship");
+
+  // posición de aparición
+  ship.style.top = Math.random() * window.innerHeight + "px";
+
+  // tamaño aleatorio
+  const size = 40 + Math.random() * 60;
+  ship.style.width = size + "px";
+
+  // comienza fuera
+  ship.style.left = "-150px";
+
+  document.body.appendChild(ship);
+
+  let speed = 3 + Math.random() * 7;
+  let x = -200;
+
+  const interval = setInterval(() => {
+    x += speed;
+    ship.style.left = x + "px";
+
+    if (x > window.innerWidth + 200) {
+      ship.remove();
+      clearInterval(interval);
+    }
+  }, 20);
+}
+
+// 🚀 Lanzar entre 1.5 y 3.5 segundos
+setInterval(() => {
+  launchSpaceship();
+}, 1500 + Math.random() * 2000);
+</script>
+
+
+<div class="space-ships"></div>
+
+</body>
+</html>
